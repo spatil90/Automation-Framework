@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-public class SeleniumBase {
+public class SeleniumBase extends Base {
 	WebDriver driver;
 	
 	public void launchBrowserAndApplication(String browser_name, String url) {
@@ -29,5 +29,14 @@ public class SeleniumBase {
 	public void closeApplication() {
 		driver.close();
 	}
+	
+	public String getPageDetails(String type) {
+		String returnvalue=null;
+		if(type.equalsIgnoreCase("currenturl")) {
+			returnvalue=driver.getCurrentUrl();
+		}
+			return returnvalue;
+	}
+	}
 
-}
+
