@@ -23,9 +23,11 @@ public class HomeStepDef extends HomePage {
 	}
 
 	@Then("verify count of links is {int}")
-	public void verify_count_of_links_is(Integer int1) {
+	public void verify_count_of_links_is(Integer expectedvalue) {
 		// Write code here that turns the phrase above into concrete actions
-		throw new cucumber.api.PendingException();
+		int actualvalue=super.getCountOfLinks();
+		
+		super.compareValue(actualvalue, expectedvalue);
 	}
 
 	@Then("close the browser")
