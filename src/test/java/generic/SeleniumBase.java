@@ -19,17 +19,17 @@ public class SeleniumBase extends Base {
 	public void launchBrowserAndApplication(String browser_name, String url) {
 		if (browser_name.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver",
-					"D:\\Snehal\\Java Programs\\UI-framework\\src\\test\\java\\drivers\\chromedriver.exe");
+					".\\src\\test\\java\\drivers\\chromedriver.exe");
 			driver = new ChromeDriver();
 
 		} else if (browser_name.equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver",
-					"D:\\Snehal\\Java Programs\\UI-framework\\src\\test\\java\\drivers\\geckodriver.exe");
+					".\\src\\test\\java\\drivers\\geckodriver.exe");
 			driver = new FirefoxDriver();
 
 		} else if (browser_name.equalsIgnoreCase("internetexplorer")) {
 			System.setProperty("webdriver.ie.driver",
-					"D:\\Snehal\\Java Programs\\UI-framework\\src\\test\\java\\drivers\\IEDriverServer.exe");
+					".\\src\\test\\java\\drivers\\IEDriverServer.exe");
 			driver = new InternetExplorerDriver();
 
 		}
