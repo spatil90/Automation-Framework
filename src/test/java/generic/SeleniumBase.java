@@ -1,6 +1,7 @@
 package generic;
 
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class SeleniumBase extends Base {
-	WebDriver driver;
+	static WebDriver driver;
 
 	protected enum locators {
 		id, name, classname, tagname, linktext, partiallinktext, css, xpath
@@ -34,16 +35,20 @@ public class SeleniumBase extends Base {
 
 		}
 		driver.get(url);
+		driver.manage().window().maximize();
 	}
 
 	public void closeApplication() {
-		driver.close();
+		driver.quit();
 	}
 
 	public String getPageDetails(String type) {
 		String returnvalue = null;
 		if (type.equalsIgnoreCase("currenturl")) {
 			returnvalue = driver.getCurrentUrl();
+		}
+		else if(type.equalsIgnoreCase("title")) {
+			returnvalue = driver.getTitle();
 		}
 		return returnvalue;
 	}
@@ -53,20 +58,28 @@ public class SeleniumBase extends Base {
 		switch (type) {
 		case id:
 			by = By.id(address);
+			break;
 		case name:
 			by = By.name(address);
+			break;
 		case classname:
 			by = By.className(address);
+			break;
 		case tagname:
 			by = By.tagName(address);
+			break;
 		case linktext:
 			by = By.linkText(address);
+			break;
 		case partiallinktext:
 			by = By.partialLinkText(address);
+			break;
 		case css:
 			by = By.cssSelector(address);
+			break;
 		case xpath:
 			by = By.xpath(address);
+			break;
 
 		}
 		return driver.findElement(by);
@@ -104,5 +117,33 @@ public class SeleniumBase extends Base {
 		}
 		return driver.findElements(by);
 
+	}
+
+	public void switchToAnotherWindow(String title) {
+		String parentWindowHandle = driver.getWindowHandle();
+		Set<String> windowHandles = driver.getWindowHandles();
+		
+		System.out.println(parentWindowHandle);
+		System.out.println(windowHandles);
+		
+		for(String handle : windowHandles) {			
+			
+			if(handle.equals(parentWindowHandle)) {
+				continue;
+			}
+			else {
+				driver.switchTo().window(handle);
+				String tempTitle = this.getPageDetails("title");
+				if(tempTitle.equals(title)) {
+					break;
+				}
+				else {
+					continue;
+				}
+			}
+		}
+		
+		
+		
 	}
 }

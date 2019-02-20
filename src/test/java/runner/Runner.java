@@ -10,7 +10,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "src/test/java/testcases",
 		glue = "step_def",
-		tags = {"@home"},
+		tags = {"@mw"},
 		dryRun= false,
 		monochrome = true
 		

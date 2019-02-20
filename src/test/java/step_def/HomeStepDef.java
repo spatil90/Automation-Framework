@@ -20,6 +20,7 @@ public class HomeStepDef extends HomePage {
 		
 		String actualvalue=super.getPageDetails(type);
 		super.compareValue(actualvalue, expectedvalue);
+		
 	}
 
 	@Then("verify count of links is {int}")
@@ -37,9 +38,9 @@ public class HomeStepDef extends HomePage {
 	}
 
 	@Then("click on {string}")
-	public void click_on(String string) {
+	public void click_on(String linkname) {
 		// Write code here that turns the phrase above into concrete actions
-		throw new cucumber.api.PendingException();
+		super.clickLink(linkname);
 	}
 
 }
