@@ -10,4 +10,3 @@ Then click on "Example 1: Element on page that is hidden" of Dynamic loading pag
 Then verify page by "currenturl" with value as "https://the-internet.herokuapp.com/dynamic_loading/1"
 Then click on "Start" button
 Then verify text as "Hello World!" from example of dynamic loading
-And close the browser

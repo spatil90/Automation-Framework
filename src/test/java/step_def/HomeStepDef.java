@@ -1,5 +1,6 @@
 package step_def;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.*;
 import generic.SeleniumBase;
 import page_Object.HomePage;
@@ -31,7 +32,7 @@ public class HomeStepDef extends HomePage {
 		super.compareValue(actualvalue, expectedvalue);
 	}
 
-	@Then("close the browser")
+	@After
 	public void close_the_browser() {
 		// Write code here that turns the phrase above into concrete actions
 		super.closeApplication();

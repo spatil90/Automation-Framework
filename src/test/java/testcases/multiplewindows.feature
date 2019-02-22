@@ -12,4 +12,3 @@ Then verify page by "currenturl" with value as "https://the-internet.herokuapp.c
 Then verify text as "New Window"
 Then switch from current window to another with title as "The Internet"
 Then verify page by "currenturl" with value as "https://the-internet.herokuapp.com/windows"
-And close the browser
