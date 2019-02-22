@@ -29,5 +29,6 @@ public class MultipleWindowsPage extends SeleniumBase {
 		return this.getTextElementOfWindow().getText();
 	}	
 
+	
 
 }
