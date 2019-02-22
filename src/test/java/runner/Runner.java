@@ -12,8 +12,7 @@ import cucumber.api.junit.Cucumber;
 		glue = "step_def",
 		tags = {"@dynamicloading"},
 		dryRun= false,
-		monochrome = true
-		
+		monochrome = true		
 		)
 public class Runner {
 

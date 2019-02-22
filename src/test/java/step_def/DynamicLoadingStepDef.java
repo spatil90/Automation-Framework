@@ -21,7 +21,7 @@ public class DynamicLoadingStepDef extends DynamicLoadingPage {
 	@Then("verify text as {string} from example of dynamic loading")
 	public void verify_text_as_from_example_of_dynamic_loading(String expectedValue) {
 	    // Write code here that turns the phrase above into concrete actions
-		String actualValue = super.getTextvalueOfStart();
+		String actualValue = super.getTextvalueOfHelloWorld();
 	    super.compareValue(actualValue, expectedValue);
 	}
 

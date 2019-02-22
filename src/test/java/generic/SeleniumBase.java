@@ -2,13 +2,19 @@ package generic;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Options;
+import org.openqa.selenium.WebDriver.Timeouts;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SeleniumBase extends Base {
 	static WebDriver driver;
@@ -34,8 +40,14 @@ public class SeleniumBase extends Base {
 			driver = new InternetExplorerDriver();
 
 		}
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		/*
+		 * Options opt = driver.manage(); Timeouts tou = opt.timeouts();
+		 * tou.implicitlyWait(30, TimeUnit.SECONDS);
+		 */
 		driver.get(url);
 		driver.manage().window().maximize();
+		
 	}
 
 	public void closeApplication() {
@@ -52,8 +64,8 @@ public class SeleniumBase extends Base {
 		}
 		return returnvalue;
 	}
-
-	public WebElement identifyElement(locators type, String address) {
+	
+	public By getByObject(locators type, String address) {
 		By by = null;
 		switch (type) {
 		case id:
@@ -82,40 +94,17 @@ public class SeleniumBase extends Base {
 			break;
 
 		}
-		return driver.findElement(by);
+		return by;
+
+	}
+
+	public WebElement identifyElement(locators type, String address) {
+		return driver.findElement(this.getByObject(type, address));
 
 	}
 
 	public List<WebElement> identifyElements(locators type, String address) {
-		By by = null;
-		switch (type) {
-		case id:
-			by = By.id(address);
-			break;
-		case name:
-			by = By.name(address);
-			break;
-		case classname:
-			by = By.className(address);
-			break;
-		case tagname:
-			by = By.tagName(address);
-			break;
-		case linktext:
-			by = By.linkText(address);
-			break;
-		case partiallinktext:
-			by = By.partialLinkText(address);
-			break;
-		case css:
-			by = By.cssSelector(address);
-			break;
-		case xpath:
-			by = By.xpath(address);
-			break;
-
-		}
-		return driver.findElements(by);
+		return driver.findElements(this.getByObject(type, address));
 
 	}
 
@@ -144,6 +133,16 @@ public class SeleniumBase extends Base {
 		}
 		
 		
+		
+	}
+
+	public void explicitWait(By by) {
+		
+		System.out.println(driver);
+		WebDriverWait wait = new WebDriverWait(driver, 60);		
+		
+		ExpectedCondition<WebElement> ec = ExpectedConditions.visibilityOfElementLocated(by);
+		wait.until(ec);
 		
 	}
 }

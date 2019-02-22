@@ -32,13 +32,14 @@ public void clickStart() {
 	}
 
 private WebElement getTextHelloWorld() {
+	super.explicitWait(super.getByObject(locators.xpath, xpathHelloWorld));
 	
 	return super.identifyElement(locators.xpath, xpathHelloWorld);
 	
 }
 
 
-public String getTextvalueOfStart() {
+public String getTextvalueOfHelloWorld() {
 	return this.getTextHelloWorld().getText();
 }	
 }
