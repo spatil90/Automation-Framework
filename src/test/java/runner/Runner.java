@@ -11,7 +11,7 @@ import cucumber.api.junit.Cucumber;
 		features = "src/test/java/testcases",
 		glue = "step_def",
 		tags = {"@dynamicloading"},
-		dryRun= false,
+		dryRun= true,
 		monochrome = true		
 		)
 public class Runner {
