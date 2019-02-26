@@ -5,10 +5,10 @@ import page_Object.DropdownPage;
 
 
 public class DropdownStepDef extends DropdownPage {
-	@Then("select and click on {string} element located by {string}")
-	public void select_and_click_on_element_located_by(String string, String string2) {
+	@Then("select {string} element located by {string}")
+	public void select_and_click_on_element_located_by(String value, String type) {
 	    // Write code here that turns the phrase above into concrete actions
-	    throw new cucumber.api.PendingException();
+	   super.selectValues(type, value);
 	}
 
 }

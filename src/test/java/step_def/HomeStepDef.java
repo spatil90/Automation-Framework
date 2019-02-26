@@ -32,7 +32,7 @@ public class HomeStepDef extends HomePage {
 		super.compareValue(actualvalue, expectedvalue);
 	}
 
-	@After
+	
 	public void close_the_browser() {
 		// Write code here that turns the phrase above into concrete actions
 		super.closeApplication();

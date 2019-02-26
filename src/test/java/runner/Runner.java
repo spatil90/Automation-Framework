@@ -10,8 +10,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "src/test/java/testcases",
 		glue = "step_def",
-		tags = {"@dynamicloading"},
-		dryRun= true,
+		tags = {"@dd"},
+		dryRun= false,
 		monochrome = true		
 		)
 public class Runner {

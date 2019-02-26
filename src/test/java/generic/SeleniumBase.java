@@ -14,6 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SeleniumBase extends Base {
@@ -143,6 +144,22 @@ public class SeleniumBase extends Base {
 		
 		ExpectedCondition<WebElement> ec = ExpectedConditions.visibilityOfElementLocated(by);
 		wait.until(ec);
+		
+	}
+	
+	public void selectValueFromDropdown(String type, String value, WebElement element) {
+		Select sel = new Select(element);
+		
+		if(type.equalsIgnoreCase("index")) {
+			int val = Integer.parseInt(value); //convert from string to int
+			sel.selectByIndex(val);
+		}
+		else if(type.equalsIgnoreCase("value")) {
+			sel.selectByValue(value);
+		}
+		else if(type.equalsIgnoreCase("text")) {
+			sel.selectByVisibleText(value);
+		}
 		
 	}
 }
