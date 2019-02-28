@@ -12,6 +12,8 @@ public class HomeStepDef extends HomePage {
 	public void user_launches_browser_and_hits_the_url(String string, String string2) {
 		// Write code here that turns the phrase above into concrete actions
 		super.launchBrowserAndApplication(string, string2);
+		//super.writeExcel();
+		super.readExcel();
 		
 	}
 
