@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Options;
@@ -159,6 +160,27 @@ public class SeleniumBase extends Base {
 		}
 		else if(type.equalsIgnoreCase("text")) {
 			sel.selectByVisibleText(value);
+		}
+		
+	}
+	
+	public void handleAlertBox(String action, String value) {
+		WebDriverWait wait = new WebDriverWait(driver, 60);		
+		
+		ExpectedCondition<Alert> ec = ExpectedConditions.alertIsPresent();
+		wait.until(ec);
+		
+		
+		Alert alt=driver.switchTo().alert();
+		if(action.equalsIgnoreCase("accept")) {
+			alt.accept();
+		}
+		else if(action.equalsIgnoreCase("dismiss")) {
+			alt.dismiss();
+		}
+		else {
+			alt.sendKeys(value);
+			
 		}
 		
 	}
